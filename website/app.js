@@ -1,0 +1,1 @@
+//API credentials from OpenWeatherMap.com
