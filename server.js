@@ -1,9 +1,9 @@
+// Act as the app API endpoint.
 projectData = {};
 
 // Express to run server and routes
 const express = require ("express")
 const app = express();
-// TODO-Start up an instance of app
 
 // Dependencies 
 const bodyParser = require('body-parser')
@@ -23,4 +23,24 @@ const server = app.listen(port, listening);
 function listening(){
     console.log("server running"); 
     console.log(`running on localhost: ${port}`);
+}
+
+// GET route
+app.get('/all', (req, res) => {
+    res.send(projectData)
+  })
+
+
+// POST route
+app.post('/addWeather', addWeatherData);
+
+function addWeatherData (req,res) {
+console.log(req.body)
+  newEntry = {
+    temp: req.body.temp,
+    content: req.body.content,
+    date: req.body.date
+  }
+
+  projectData.push(newEntry)
 }
