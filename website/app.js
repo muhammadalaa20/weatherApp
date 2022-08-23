@@ -81,7 +81,7 @@ const updateUI = async () =>{
     }
    }
 
-   
+  
    /*
    const retrieveData = async () =>{
     const request = await fetch('/all');
