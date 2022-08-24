@@ -49,5 +49,4 @@ console.log(req.body)
   
   projectData=newEntry;
   res.send(projectData);
-  console.log(projectData);
 }
