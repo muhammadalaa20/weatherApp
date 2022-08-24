@@ -3,29 +3,28 @@
    let newDate = d.getMonth()+'.'+d.getDate()+'.'+d.getFullYear();
    console.log(d)
 //API credentials from OpenWeatherMap.com
-const baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip='
+const baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
 const apiKey = ',us&appid=3cb937893a4d8a713e99c4b3e5453b9c&units=imperial';
 
 //adding event listener to the generate button
-document.getElementById('generate').addEventListener('click', performAction)
+document.getElementById('generate').addEventListener('click', performAction);
 
 /* Function called by event listener */
 function performAction(e){
-    const zipCode =document.getElementById('zip').value
-    const feelings =document.getElementById('feelings').value
+    const zipCode =document.getElementById('zip').value;
+    const feelings =document.getElementById('feelings').value;
+    
     getWeatherData(baseURL,zipCode,apiKey)
 
     // New Syntax!
-  .then(function(data){
+  .then((data)=>{
     // Add data
-    console.log(data);
-    postData('/addWeather', {temp:data.main.temp, content: feelings, date:d} );
+    postData ('/addWeather', {temp:data.main.temp, content: feelings, date:d})
   })
   
   .then(()=>updateUI())
   
 }
-
 
 /*Function to get the data*/ 
 const getWeatherData = async(baseURL,zipCode,apiKey) => {
@@ -33,6 +32,7 @@ const getWeatherData = async(baseURL,zipCode,apiKey) => {
     try{
         const data = await res.json
         console.log(data)
+        return data;
     }catch(error){
         console.log('error',error);
     }
@@ -69,7 +69,7 @@ const updateUI = async () =>{
     const allData = await request.json()
     console.log(allData)
     // Write updated data to DOM elements
-    document.getElementById('temp').innerHTML = Math.round(allData.temp)+ 'degrees';
+    document.getElementById('temp').innerHTML = allData.temp;
     document.getElementById('content').innerHTML = allData.content;
     document.getElementById('date').innerHTML =allData.date;
     }

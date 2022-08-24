@@ -47,6 +47,7 @@ console.log(req.body)
     date: req.body.date
   }
   
-  projectData=newEntry
-  //projectData.push(newEntry)
+  projectData=newEntry;
+  res.send(projectData);
+  console.log(projectData);
 }
