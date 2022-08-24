@@ -10,6 +10,11 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+/*
+//Axios
+const axios = require('axios').default;
+app.use(axios());
+*/
 // Cors for cross origin allowance
 const cors = require("cors")
 app.use(cors());
@@ -41,6 +46,7 @@ console.log(req.body)
     content: req.body.content,
     date: req.body.date
   }
-
-  projectData.push(newEntry)
+  
+  projectData=newEntry
+  //projectData.push(newEntry)
 }

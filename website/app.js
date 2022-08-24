@@ -41,7 +41,7 @@ const getWeatherData = async(baseURL,zipCode,apiKey) => {
 /*Function to post the data*/
 const postWeatherData = async ( url = '', data = {})=>{
     console.log(data)
-      const response = await Axios (url, {
+      const response = await fetch(url, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       credentials: 'same-origin', // include, *same-origin, omit
       headers: {
